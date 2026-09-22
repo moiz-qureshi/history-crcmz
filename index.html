@@ -42,12 +42,25 @@
     .hero-dek{max-width:680px;margin:38px auto 0;color:var(--muted);font-size:clamp(1rem,2vw,1.42rem);line-height:1.45}
     .scroll-cue{position:absolute;left:50%;bottom:clamp(24px,5vh,54px);transform:translateX(-50%);display:grid;justify-items:center;gap:10px;color:var(--dim);font-size:.68rem;font-weight:650;letter-spacing:.14em;text-transform:uppercase}
     .scroll-cue::after{content:"";width:1px;height:42px;background:linear-gradient(var(--dim),transparent);animation:breathe 1.8s ease-in-out infinite}
-    .stat-reel{min-height:115vh;display:grid;align-items:center;padding:16vh max(24px,calc((100vw - 1180px)/2))}
-    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}
-    .stat{min-height:180px;padding:32px;background:var(--bg);display:flex;flex-direction:column;justify-content:space-between}
-    .stat b{font-size:clamp(2.9rem,7vw,6.7rem);line-height:.85;letter-spacing:-.065em;font-variant-numeric:tabular-nums}
-    .stat span{color:var(--muted);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
-    .stat.key b{color:var(--lime)}
+    .vibe-reel{position:relative;min-height:112vh;display:grid;align-content:center;gap:8vh;overflow:hidden;padding:14vh 0}
+    .vibe-orb{position:absolute;left:50%;top:50%;width:min(84vw,780px);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,color-mix(in srgb,var(--lime) 15%,transparent) 0,color-mix(in srgb,var(--ice) 10%,transparent) 44%,transparent 68%);filter:blur(12px);pointer-events:none;animation:orb-pulse 7s ease-in-out infinite}
+    @keyframes orb-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}50%{transform:translate(-50%,-50%) scale(1.14);opacity:1}}
+    .vibe-copy{position:relative;text-align:center;padding:0 22px}
+    .vibe-range{margin:0 0 22px;color:var(--muted);font-size:clamp(.72rem,1.2vw,.9rem);font-weight:650;letter-spacing:.16em;text-transform:uppercase}
+    .vibe-copy h2{margin:0;font-size:clamp(3rem,9.4vw,8.6rem);font-weight:770;letter-spacing:-.06em;line-height:.96;text-wrap:balance}
+    .vibe-copy h2 span{display:block}
+    .vibe-copy .grad{color:transparent;background:linear-gradient(100deg,var(--ice),var(--lime) 55%,var(--warm));-webkit-background-clip:text;background-clip:text}
+    .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+    .marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+    .marquee-track.rev{animation:marquee-rev 38s linear infinite}
+    .marquee-group{display:flex;align-items:center;gap:3rem;padding-right:3rem}
+    .marquee-group span{font-size:clamp(1.5rem,3.2vw,2.7rem);font-weight:740;letter-spacing:-.02em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--text) 52%,transparent)}
+    .marquee-group i{font-style:normal;font-size:1rem;color:var(--lime)}
+    .marquee-track.rev .marquee-group span{-webkit-text-stroke-color:color-mix(in srgb,var(--ice) 60%,transparent)}
+    .marquee-track.rev .marquee-group i{color:var(--ice)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    @keyframes marquee-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+    @media(prefers-reduced-motion:reduce){.vibe-orb,.marquee-track{animation:none}}
 
     .era-nav{position:fixed;right:max(14px,2vw);top:50%;z-index:70;transform:translateY(-50%);display:grid;gap:9px;padding:12px 9px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
     .era-nav a{position:relative;width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--text) 22%,transparent);text-decoration:none;transition:background .25s,transform .25s}
@@ -93,14 +106,6 @@
     .event.featured .event-card::after{width:4px;opacity:1}
     .featured-badge{display:inline-flex;align-items:center;margin:2px 0 20px;padding:8px 15px;border-radius:999px;background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 30%,transparent),color-mix(in srgb,var(--accent) 10%,transparent));border:1px solid color-mix(in srgb,var(--accent) 48%,transparent);color:var(--accent);font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
     .event.featured h3{font-size:clamp(2.1rem,4.6vw,4rem)}
-    .site-mock{margin-top:30px;max-width:640px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg-soft);box-shadow:0 24px 60px rgba(0,0,0,.42)}
-    .site-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:color-mix(in srgb,var(--panel-2) 72%,transparent);border-bottom:1px solid var(--line)}
-    .site-bar i{width:10px;height:10px;border-radius:50%;background:color-mix(in srgb,var(--text) 20%,transparent)}
-    .site-bar i:first-child{background:#ff5f57}.site-bar i:nth-child(2){background:#febc2e}.site-bar i:nth-child(3){background:#28c840}
-    .site-bar span{flex:1;margin-left:8px;text-align:center;font-size:.74rem;color:var(--muted);letter-spacing:.05em;background:color-mix(in srgb,var(--text) 6%,transparent);border-radius:8px;padding:5px 12px}
-    .site-body{padding:54px 24px 60px;text-align:center;background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--accent) 24%,transparent),transparent 66%)}
-    .site-body b{display:block;font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;letter-spacing:-.06em;line-height:1;background:linear-gradient(120deg,var(--text) 20%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .site-body span{display:block;margin-top:12px;color:var(--muted);font-size:.74rem;font-weight:650;letter-spacing:.2em;text-transform:uppercase}
 
     .finale{min-height:120vh;display:grid;place-items:center;text-align:center;padding:18vh 22px}
     .finale p{margin:0;color:var(--muted);font-size:clamp(1rem,2vw,1.35rem)}
@@ -116,7 +121,7 @@
       .progress span{width:0;height:100%}
       .hero{height:140vh}.hero-sticky{padding:22px 16px}.hero-range{margin-bottom:16px;font-size:.64rem}
       h1{font-size:clamp(3.2rem,18vw,5.1rem);line-height:.82}.hero-dek{margin-top:24px;font-size:1rem;max-width:320px}.scroll-cue{bottom:20px}
-      .stat-reel{min-height:auto;padding:90px 16px 120px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.stat{min-height:130px;padding:20px 16px}.stat:last-child{grid-column:1/-1}.stat b{font-size:clamp(2.7rem,15vw,4.4rem)}.stat span{font-size:.65rem}
+      .vibe-reel{min-height:92vh;gap:5vh;padding:10vh 0}
       .era-nav{left:50%;right:auto;top:auto;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);grid-template-columns:repeat(8,1fr);gap:9px;padding:9px 12px}.era-nav a{width:8px;height:8px}.era-nav a::before{display:none}
       main{padding:0 16px 110px}
       .era{display:block;padding:100px 0 110px}.era::before{top:52px}.era-head{position:relative;top:auto;height:auto;min-height:48vh;justify-content:center;padding:40px 0 58px}
@@ -129,12 +134,12 @@
     }
     @media(max-width:390px){
       h1{font-size:clamp(3rem,17.2vw,4.25rem)}
-      .stat{padding:18px 14px}.stat b{font-size:2.7rem}
+      
       main{padding-inline:13px}.era{padding-top:82px}.era-name h2{font-size:2.55rem}
       .event{padding-left:18px}.timeline::before{left:4px}.event::before{left:-1px}.card-main,.details-content{padding-left:17px;padding-right:17px}.meta{gap:8px}.date{max-width:78%;line-height:1.25}.event h3{font-size:1.72rem}
     }
     @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}.scroll-cue::after{animation:none}.hero,.stat-reel{height:auto;min-height:auto}.hero-sticky{position:relative;min-height:100svh}.hero-copy,.hero-haze,.era-num,.event-card{transform:none!important;opacity:1!important}.event-card{position:relative}.era-head{position:relative;top:auto;height:auto}.timeline{gap:42px}.event{min-height:auto}.era-nav a{transition:none}
+      html{scroll-behavior:auto}.scroll-cue::after{animation:none}.hero,.vibe-reel{height:auto;min-height:auto}.hero-sticky{position:relative;min-height:100svh}.hero-copy,.hero-haze,.era-num,.event-card{transform:none!important;opacity:1!important}.event-card{position:relative}.era-head{position:relative;top:auto;height:auto}.timeline{gap:42px}.event{min-height:auto}.era-nav a{transition:none}
     }
   </style>
 </head>
@@ -163,15 +168,14 @@
     </div>
   </header>
 
-  <section class="stat-reel" aria-label="Story highlights">
-    <div class="stat-grid">
-      <div class="stat key"><b>31</b><span>moments</span></div>
-      <div class="stat"><b>8</b><span>eras</span></div>
-      <div class="stat"><b>77</b><span>clips captured</span></div>
-      <div class="stat"><b>309</b><span>tracks</span></div>
-      <div class="stat"><b>10.4K</b><span>WhatsApp msgs</span></div>
-      <div class="stat"><b>27</b><span>platinums</span></div>
+  <section class="vibe-reel" aria-label="The journey so far">
+    <div class="vibe-orb" aria-hidden="true"></div>
+    <div class="vibe-copy">
+      <p class="vibe-range">2023 → September 2026</p>
+      <h2><span>From game chat</span><span class="grad">to machine.</span></h2>
     </div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><div class="marquee-group"><span>The Origin</span><i>✦</i><span>First Builds</span><i>✦</i><span>The PSN Summer</span><i>✦</i><span>The Break</span><i>✦</i><span>The Comeback</span><i>✦</i><span>Skyrocket</span><i>✦</i><span>The Sprint</span><i>✦</i><span>The North Star</span><i>✦</i></div><div class="marquee-group"><span>The Origin</span><i>✦</i><span>First Builds</span><i>✦</i><span>The PSN Summer</span><i>✦</i><span>The Break</span><i>✦</i><span>The Comeback</span><i>✦</i><span>Skyrocket</span><i>✦</i><span>The Sprint</span><i>✦</i><span>The North Star</span><i>✦</i></div></div></div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track rev"><div class="marquee-group"><span>AI Coaching</span><i>✦</i><span>Clip Pipeline</span><i>✦</i><span>Roast Button</span><i>✦</i><span>Giveaways</span><i>✦</i><span>Huddle</span><i>✦</i><span>Watch Party</span><i>✦</i><span>Slaptastic</span><i>✦</i><span>MCP Everywhere</span><i>✦</i></div><div class="marquee-group"><span>AI Coaching</span><i>✦</i><span>Clip Pipeline</span><i>✦</i><span>Roast Button</span><i>✦</i><span>Giveaways</span><i>✦</i><span>Huddle</span><i>✦</i><span>Watch Party</span><i>✦</i><span>Slaptastic</span><i>✦</i><span>MCP Everywhere</span><i>✦</i></div></div></div>
   </section>
 
   <main>
@@ -180,7 +184,7 @@
     </div></section>
 
     <section class="era" id="era-2"><div class="era-head"><div class="era-num">02</div><div class="era-name"><h2>First Builds</h2><p>2024 – May 2025</p></div></div><div class="timeline">
-      <article class="event featured"><div class="event-card"><div class="card-main"><div class="meta"><span class="date">Jan 2024 → Jun 2024</span><span class="event-no">02 / 31</span></div><span class="featured-badge">★ The first build</span><h3>crcmz.me goes live</h3><p class="hook">Before any bot existed, there was a website — built just for fun. May 2024: the clan gets its first home on the internet.</p><div class="site-mock" aria-hidden="true"><div class="site-bar"><i></i><i></i><i></i><span>crcmz.me</span></div><div class="site-body"><b>CRCMZ</b><span>est. 2023 · Canada + US</span></div></div></div><div class="details"><div class="details-inner"><div class="details-content"><ul><li>Free clan joins via a simple Typebot intake, plus a Discord link.</li><li>Every member got a hand-made AI portrait — Soup wrote each character from their real traits (this later became the presence-alert art).</li><li>Later aside — May 19, 2025: a “join clan” button was added and removed the same day.</li></ul><div class="funfact"><strong>FUN FACT</strong>Samad: confident truck driver with a semi-truck helmet. Hosty: biryani dish for a head. IG_Juicy: milk carton head. These weren’t jokes — they were canon.</div></div></div></div></div></article>
+      <article class="event featured"><div class="event-card"><div class="card-main"><div class="meta"><span class="date">Jan 2024 → Jun 2024</span><span class="event-no">02 / 31</span></div><span class="featured-badge">★ The first build</span><h3>crcmz.me goes live</h3><p class="hook">Before any bot existed, there was a website — built just for fun. May 2024: the clan gets its first home on the internet.</p></div><div class="details"><div class="details-inner"><div class="details-content"><ul><li>Free clan joins via a simple Typebot intake, plus a Discord link.</li><li>Every member got a hand-made AI portrait — Soup wrote each character from their real traits (this later became the presence-alert art).</li><li>Later aside — May 19, 2025: a “join clan” button was added and removed the same day.</li></ul><div class="funfact"><strong>FUN FACT</strong>Samad: confident truck driver with a semi-truck helmet. Hosty: biryani dish for a head. IG_Juicy: milk carton head. These weren’t jokes — they were canon.</div></div></div></div></div></article>
       <article class="event"><div class="event-card"><div class="card-main"><div class="meta"><span class="date">May 31, 2025</span><span class="event-no">03 / 31</span></div><h3>Monetized before the product existed</h3><p class="hook">A full paid VIP flow built in a single evening — two weeks BEFORE the first API experiment.</p></div><div class="details"><div class="details-inner"><div class="details-content"><ul><li>Payment page, success page (“Payment Successful — Thank you for your subscription. You’re now a VIP Clan Member.”), cancel page — about an hour of work.</li><li>Perks at the time: giveaways, website feature, priority voting.</li><li>3 people paid while the clan “had nothing basically” — Soup marketed it mid-game.</li><li>Later update — Sep 3, 2026: relaunched as “The Loadout,” a 7-card VIP perks grid, with Mattermost access added as an 8th perk the same day.</li></ul></div></div></div></div></article>
     </div></section>
 
